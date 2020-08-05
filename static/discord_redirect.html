@@ -1,0 +1,11 @@
+<body onload="JavaScript:redirect()">
+    Redirecting..
+    <script>
+        function redirect() {
+            if (!window.location.hash) {
+            } else {
+                window.location.href = window.location.href.split('#')[0] + '/success?' + window.location.href.split('#')[1]
+            }
+        }
+    </script>
+</body>

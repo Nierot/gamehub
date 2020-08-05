@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include ("../partials/head") %>
+        <title>Games</title>
+
+        <style>
+            body, html {
+                height: 100%;
+                background: rgb(132,124,136);
+                background: linear-gradient(90deg, rgba(132,124,136,1) 0%, rgba(194,175,200,1) 100%); 
+            }
+            .row {
+                display: flex;
+                flex-direction: row;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container h-100">
+            <div class="row align-items-center h-100">
+                <div class="col-auto mx-auto">
+                    <div class="card bg-dark mb-3 text-white">
+                        <div class="card-body">
+                            <h5 class="card-header">
+                                To use this website you need to login.
+                            </h5>
+                            <ul class="list-group list-group-flush bg-primary">
+                                <li class="list-group-item text-primary">Login with google</li>
+                                <li class="list-group-item text-primary">Continue as a guest</li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
