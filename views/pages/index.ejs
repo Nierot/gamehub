@@ -3,16 +3,52 @@
     <head>
         <%- include ("../partials/head") %>
         <title>Games</title>
+
+        <script>
+            if (!localStorage.getItem('user_id')) {
+                location.href = '/login'
+            }
+        </script>
+        <style>
+            .container-fluid {
+                justify-content: space-between;
+            }
+        </style>
     </head>
 
-    <body class="container">
+    <body class="container-fluid">
         <div class="row">
-            <div class="col-sm-12">
-                <div class="jumbotron">
-                    <h1>Hallo</h1>
-                    <p>Template</p>
+            <div class="col-3"></div>
+            <header class="col">
+                <h1 class="display-4 text-white">
+                    Select a game below to start
+                </h1>
+            </header>
+        </div>
+        <br>
+        <div class="row d-flex justify-content-between">
+            <div class="col-2"></div>
+            <!-- <div class="col-2">
+                <div class="card" style="width: 20rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">30 seconds</h5>
+                        <p class="card-text">Get angry when you fail to describe words.</p>
+                        <a href="#" class="btn btn-primary">Start</a>
+                        <a href="#" class="btn btn-secondary">Create wordlist</a>
+                    </div>
+                </div>
+            </div> -->
+            <div class="col-2">
+                <div class="card" style="width: 20rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">32 seconds</h5>
+                        <p class="card-text">Get angry when you fail to describe words.</p>
+                        <a href="#" class="btn btn-primary">Start</a>
+                        <a href="#" class="btn btn-secondary">Create wordlist</a>
+                    </div>
                 </div>
             </div>
+            <div class="col-3"></div>
         </div>
         
     </body>

@@ -15,6 +15,16 @@
                 flex-direction: row;
             }
         </style>
+
+        <script>
+            function guestLogin() {
+                let discriminator = Math.floor(Math.random() * 9999) + 1000;
+                localStorage.setItem('user_id', `guest#${discriminator}`);
+                localStorage.setItem('user_username', `guest#${discriminator}`);
+                localStorage.setItem('user_type', 'guest');
+                location.href = '/'
+            }
+        </script>
     </head>
 
     <body>
@@ -22,14 +32,29 @@
             <div class="row align-items-center h-100">
                 <div class="col-auto mx-auto">
                     <div class="card bg-dark mb-3 text-white">
-                        <div class="card-body">
-                            <h5 class="card-header">
+                        <div class="card-body align-items-center">
+                            <h5 class="card-title">
                                 To use this website you need to login.
                             </h5>
-                            <ul class="list-group list-group-flush bg-primary">
-                                <li class="list-group-item text-primary">Login with google</li>
+                            <a class="btn btn-primary" href="/discord">
+                                Continue with Discord
+                            </a>
+                            <br><br>
+                            <button class="btn btn-secondary" href="javascript:void(0);" onclick="guestLogin()">
+                                Continue as a guest
+                            </button>
+                            <br>
+                            <small>
+                                As a guest you cannot save anything
+                            </small>
+                            <!-- <ul class="list-group list-group-flush bg-primary">
+                                <li class="list-group-item text-primary align-middle">
+                                    <a href="/discord">
+                                        Login with Discord
+                                    </a>
+                                </li>
                                 <li class="list-group-item text-primary">Continue as a guest</li>
-                            </ul>
+                            </ul> -->
 
                         </div>
                     </div>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Redirect</title>
+        <script>
+            function handleUser() {
+                localStorage.setItem('user_id', '<%= id %>');
+                localStorage.setItem('user_username', '<%= username %>');
+                localStorage.setItem('user', '<%= email %>');
+                localStorage.setItem('user_type', 'discord');
+                location.href = '/'
+            }
+        </script>
+    </head>
+    <body onload='handleUser()'>
+        Redirecting...
+    </body>
+</html>

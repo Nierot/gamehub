@@ -1,14 +1,10 @@
 const app = require('express')();
 const settings = require('./settings.json');
-const DiscordOauth2 = require('discord-oauth2');
 const bodyParser = require('body-parser');
 const discord = require('./utils/discord');
+const { Worker } = require('worker_threads');
 
-const oauth = new DiscordOauth2({
-    clientId: settings.discord_client_id,
-    clientSecret: settings.discord_client_secret,
-    redirectUri: settings.redirect_uri
-})
+let workers = {};
 
 app.get('/', (req, res) => {
     res.render('pages/index');
@@ -18,9 +14,27 @@ app.get('/login', (req, res) => {
     res.render('pages/login');
 })
 
+app.get('/start/*', async (req, res) => {
+    let game = req.url.split('/')[2];
+    if (!settings.available_games.includes(game)) return res.send('whats that');
+
+    res.send(`Launching an instance of ${game}`);
+    let worker = new Worker('./test.js');
+    worker.on('message', msg => {
+        workers[msg.toString()] = worker;
+        console.log(workers);
+    });
+    worker.on('error', err => console.error(err));
+    worker.on('exit', exitCode => console.log(`Worker has stopped with exit code: ${exitCode}`));
+});
+
 app.get('/discord/callback/success', async (req, res) => {
-    await discord.getUserID(req.query.access_token);
-    res.json(await discord.getUser(req.query.access_token))
+    let user = await discord.getUser(req.query.access_token);
+    res.render('pages/discord', {
+        id: user.id,
+        username: user.username,
+        email: user.email
+    })
 })
 
 app.get('/discord/callback', (req, res) => {
@@ -38,4 +52,5 @@ app.set('view engine', 'ejs');
 
 app.listen(settings.port, () => {
     console.log(`Listening on http://localhost:${settings.port}`)
+    //setInterval(() => console.log(workers), 5000);
 });
