@@ -8,47 +8,57 @@
             if (!localStorage.getItem('user_id')) {
                 location.href = '/login'
             }
+
+            function initSeconds() {
+                fetch('/start/32-seconds')
+                    .then(console.log)
+                    .catch(console.error)
+            }
         </script>
         <style>
-            .container-fluid {
+            /* .container-fluid {
                 justify-content: space-between;
-            }
+            } */
         </style>
     </head>
 
     <body class="container-fluid">
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-3"></div>
             <header class="col">
                 <h1 class="display-4 text-white">
                     Select a game below to start
                 </h1>
             </header>
-        </div>
-        <br>
-        <div class="row d-flex justify-content-between">
-            <div class="col-2"></div>
-            <!-- <div class="col-2">
-                <div class="card" style="width: 20rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">30 seconds</h5>
-                        <p class="card-text">Get angry when you fail to describe words.</p>
-                        <a href="#" class="btn btn-primary">Start</a>
-                        <a href="#" class="btn btn-secondary">Create wordlist</a>
+        </div> -->
+        <div class="py-5 text-white">
+            <div class="container">
+                <div class="row">
+                    <div class="p-5 col-lg-7 d-flex flex-column justify-content-center">
+                        <h3 class="display-4 mb-3">32 seconds</h3>
+                        <p class="lead mb-0">Let your illiterate teammates guess words that you are poorly describing.</p>
                     </div>
-                </div>
-            </div> -->
-            <div class="col-2">
-                <div class="card" style="width: 20rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">32 seconds</h5>
-                        <p class="card-text">Get angry when you fail to describe words.</p>
-                        <a href="#" class="btn btn-primary">Start</a>
-                        <a href="#" class="btn btn-secondary">Create wordlist</a>
+                    <div class="col-lg-5 p-0 d-flex flex-column justify-content-center">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-success lead mb-0" href="javascript:void(0)" onclick="initSeconds()">Start a game</button>
+                            <button type="button" class="btn btn-secondary" href='#'>Create a wordlist</button>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-3"></div>
+        </div>
+        <div class="py-5 text-white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 p-0">
+                        <div class="embed-responsive embed-responsive-4by3" > <video src="https://static.pingendo.com/video-placeholder.mp4" class="embed-responsive-item" type="video/mp4" controls="controls"> Your browser does not support HTML5 video. </video> </div>
+                    </div>
+                    <div class="p-5 col-lg-7 d-flex flex-column justify-content-center">
+                        <h3 class="display-4 mb-3">Coming soon</h3>
+                        <p class="lead mb-0">A nice description for a game that is coming soon. This description makes it look like there is a lot more content on this website, but in reality there only is 32 seconds. I wonder if there even is a second game. Also enjoy the weird filler video that is there.</p>
+                    </div>
+                </div>
+            </div>
         </div>
         
     </body>
