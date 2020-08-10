@@ -13,12 +13,11 @@ module.exports = {
 
     getUser: async authCode => {
         try {
-            let headers = {
-                'Authorization': `Bearer ${authCode}`
-            }
             return await r2('https://discord.com/api/users/@me', {
                 method: 'GET',
-                headers: headers
+                headers: {
+                    'Authorization': `Bearer ${authCode}`
+                }
             }).json;
         } catch (err) {
             console.error(err);
