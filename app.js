@@ -1,9 +1,9 @@
 const app = require('express')();
 const settings = require('./settings.json');
-const bodyParser = require('body-parser');
 const discord = require('./utils/discord');
 const threads = require('./utils/threads');
 const cors = require('cors');
+const { Log } = require('nielog');
 
 let workers = {};
 
@@ -41,11 +41,11 @@ app.get('/discord/callback/success', async (req, res) => {
 app.get('/discord/callback', (req, res) => res.sendFile('static/discord_redirect.html', { root: '.' }))
 app.get('/discord', (req, res) => res.redirect(settings.discord_oauth_url))
 
-app.use(bodyParser);
 app.use(cors);
 app.set('view engine', 'ejs');
 
+proxyServer.createProxyServer({ target: `http://localhost:8079` }).listen(8001);
+
 app.listen(settings.port, () => {
-    console.log(`Listening on http://localhost:${settings.port}`)
-    //setInterval(() => console.log(workers), 5000);
+    console.log(`Listening on http://localhost:${settings.port}`);
 });
