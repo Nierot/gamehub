@@ -18,9 +18,8 @@ app.get('/start/*', async (req, res) => {
         .then(obj => {
             workers[obj.port] = {
                 worker: obj.worker,
-                dateCreated: new Date()
+                dateCreated: new Date().getTime()
             }
-            res.send(obj.port); // Reverse proxy
             console.log(workers);
         })
         .catch(err => {
@@ -43,8 +42,6 @@ app.get('/discord', (req, res) => res.redirect(settings.discord_oauth_url))
 
 app.use(cors);
 app.set('view engine', 'ejs');
-
-proxyServer.createProxyServer({ target: `http://localhost:8079` }).listen(8001);
 
 app.listen(settings.port, () => {
     console.log(`Listening on http://localhost:${settings.port}`);
